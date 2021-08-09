@@ -22,7 +22,7 @@ object Cypher2 extends App {
 
     for(x <- 0 until plaintext.length()) {
       if (Character.isLetter(plaintext.charAt(x))) {
-        cypherIndex = Alphabet.indexOf(plaintext(x)) + shift
+        cypherIndex = (Alphabet.indexOf(plaintext(x)) + shift)%26
         if(cyphertext == null){cyphertext = (Alphabet(cypherIndex).toString)}
         else{cyphertext += Alphabet(cypherIndex)}
       }
@@ -46,7 +46,7 @@ object Cypher2 extends App {
 
     for(x <- 0 until cyphertext.length()) {
       if (Character.isLetter(cyphertext.charAt(x))) {
-        cypherIndex = Alphabet.indexOf(cyphertext(x)) - shift
+        cypherIndex = 26 - cyphertext.indexOf(cyphertext(x)) - shift
         if(plaintext == null){plaintext = (Alphabet(cypherIndex).toString)}
         else{plaintext += Alphabet(cypherIndex)}
       }
